@@ -92,6 +92,7 @@ gstqtighost_EXTERNAL_OBJECTS =
 
 gstqtighost.so: CMakeFiles/gstqtighost.dir/qtighost.cpp.o
 gstqtighost.so: CMakeFiles/gstqtighost.dir/build.make
+gstqtighost.so: /usr/lib/aarch64-linux-gnu/libpython3.12.so
 gstqtighost.so: CMakeFiles/gstqtighost.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/ubuntu/Projects/gst-template-plugin/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX shared library gstqtighost.so"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/gstqtighost.dir/link.txt --verbose=$(VERBOSE)

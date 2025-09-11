@@ -15,11 +15,16 @@ pkg_check_modules(GST REQUIRED
     gstreamer-video-1.0>=1.0
 )
 
+# Find Python and NumPy
+find_package(Python3 COMPONENTS Interpreter Development NumPy REQUIRED)
+
 # Get GStreamer version separately for display
 pkg_get_variable(GST_VERSION gstreamer-1.0 version)
 
 # Include directories
 include_directories(${GST_INCLUDE_DIRS})
+include_directories(${Python3_INCLUDE_DIRS})
+include_directories(${Python3_NumPy_INCLUDE_DIRS})
 
 # Add compiler flags
 add_definitions(${GST_CFLAGS})
@@ -32,7 +37,6 @@ add_definitions(
     "-DGST_LICENSE=\"LGPL\""
     "-DGST_PACKAGE_NAME=\"GStreamer QTI Ghost Plugin\""
     "-DGST_PACKAGE_ORIGIN=\"https://github.com/your-repo/gst-qtighost\""
-    -DHAVE_CONFIG_H
 )
 
 # Create the plugin library
@@ -41,7 +45,10 @@ add_library(gstqtighost SHARED
 )
 
 # Link libraries
-target_link_libraries(gstqtighost ${GST_LIBRARIES})
+target_link_libraries(gstqtighost 
+    ${GST_LIBRARIES}
+    ${Python3_LIBRARIES}
+)
 
 # Set library properties
 set_target_properties(gstqtighost PROPERTIES
@@ -54,10 +61,10 @@ install(TARGETS gstqtighost
     LIBRARY DESTINATION lib/gstreamer-1.0
 )
 
-# Get GStreamer version separately for display
-pkg_get_variable(GST_VERSION gstreamer-1.0 version)
-
 # Print build information
-message(STATUS "Building GStreamer QTI Ghost plugin")
+message(STATUS "Building GStreamer QTI Ghost plugin with Python support")
 message(STATUS "GStreamer version: ${GST_VERSION}")
+message(STATUS "Python version: ${Python3_VERSION}")
+message(STATUS "Python include: ${Python3_INCLUDE_DIRS}")
+message(STATUS "NumPy include: ${Python3_NumPy_INCLUDE_DIRS}")
 message(STATUS "Install destination: ${CMAKE_INSTALL_PREFIX}/lib/gstreamer-1.0")

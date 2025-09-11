@@ -3,6 +3,8 @@
 
 #include <gst/gst.h>
 #include <gst/base/gstbasetransform.h>
+#include <gst/video/video.h>
+#include <Python.h>
 
 G_BEGIN_DECLS
 
@@ -20,6 +22,16 @@ struct _GstQtiGhost {
     
     // Plugin-specific data members
     guint frame_count;
+    GstVideoInfo video_info;
+    
+    // Python callback system
+    PyObject* python_module;
+    PyObject* python_function;
+    gboolean python_initialized;
+    
+    // Properties
+    gchar* python_script_path;
+    gchar* python_function_name;
 };
 
 struct _GstQtiGhostClass {
