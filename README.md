@@ -1,3 +1,10 @@
+# GST-TEMPLATE (GHOST) PLUGIN
+
+### Build Insructions
+```
+cd 
+```
+
 mkdir build && cd build
    cmake ..
    make

@@ -2,12 +2,6 @@
 #include "config.h"
 #endif
 
-// Define required macros for GStreamer plugin BEFORE any GStreamer includes
-#define PACKAGE "qtighost"
-#define PACKAGE_NAME "QTI Ghost Plugin"
-#define PACKAGE_VERSION "1.0"
-#define GST_PACKAGE_ORIGIN "http://example.com/"
-
 // Disable deprecated NumPy API warnings
 #define NPY_NO_DEPRECATED_API NPY_1_7_API_VERSION
 
