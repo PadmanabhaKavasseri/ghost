@@ -43,17 +43,25 @@ if(NOT DEFINED CMAKE_OBJDUMP)
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
-  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/gstreamer-1.0/gstqtighost.so" AND
-     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/gstreamer-1.0/gstqtighost.so")
+  if(EXISTS "$ENV{DESTDIR}/usr/lib/aarch64-linux-gnu/gstreamer-1.0/gstqtighost.so" AND
+     NOT IS_SYMLINK "$ENV{DESTDIR}/usr/lib/aarch64-linux-gnu/gstreamer-1.0/gstqtighost.so")
     file(RPATH_CHECK
-         FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/gstreamer-1.0/gstqtighost.so"
+         FILE "$ENV{DESTDIR}/usr/lib/aarch64-linux-gnu/gstreamer-1.0/gstqtighost.so"
          RPATH "")
   endif()
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/gstreamer-1.0" TYPE SHARED_LIBRARY FILES "/home/ubuntu/Projects/gst-template-plugin/build/gstqtighost.so")
-  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/gstreamer-1.0/gstqtighost.so" AND
-     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/gstreamer-1.0/gstqtighost.so")
+  list(APPEND CMAKE_ABSOLUTE_DESTINATION_FILES
+   "/usr/lib/aarch64-linux-gnu/gstreamer-1.0/gstqtighost.so")
+  if(CMAKE_WARN_ON_ABSOLUTE_INSTALL_DESTINATION)
+    message(WARNING "ABSOLUTE path INSTALL DESTINATION : ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
+  endif()
+  if(CMAKE_ERROR_ON_ABSOLUTE_INSTALL_DESTINATION)
+    message(FATAL_ERROR "ABSOLUTE path INSTALL DESTINATION forbidden (by caller): ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
+  endif()
+  file(INSTALL DESTINATION "/usr/lib/aarch64-linux-gnu/gstreamer-1.0" TYPE SHARED_LIBRARY FILES "/home/ubuntu/Projects/gst-template-plugin/build/gstqtighost.so")
+  if(EXISTS "$ENV{DESTDIR}/usr/lib/aarch64-linux-gnu/gstreamer-1.0/gstqtighost.so" AND
+     NOT IS_SYMLINK "$ENV{DESTDIR}/usr/lib/aarch64-linux-gnu/gstreamer-1.0/gstqtighost.so")
     if(CMAKE_INSTALL_DO_STRIP)
-      execute_process(COMMAND "/usr/bin/strip" "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/gstreamer-1.0/gstqtighost.so")
+      execute_process(COMMAND "/usr/bin/strip" "$ENV{DESTDIR}/usr/lib/aarch64-linux-gnu/gstreamer-1.0/gstqtighost.so")
     endif()
   endif()
 endif()

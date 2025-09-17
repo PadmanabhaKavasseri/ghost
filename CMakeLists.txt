@@ -57,9 +57,8 @@ set_target_properties(gstqtighost PROPERTIES
 )
 
 # Installation
-install(TARGETS gstqtighost
-    LIBRARY DESTINATION lib/gstreamer-1.0
-)
+set(PLUGIN_INSTALL_DIR /usr/lib/aarch64-linux-gnu/gstreamer-1.0)
+install(TARGETS gstqtighost LIBRARY DESTINATION ${PLUGIN_INSTALL_DIR} )
 
 # Print build information
 message(STATUS "Building GStreamer QTI Ghost plugin with Python support")
@@ -67,4 +66,4 @@ message(STATUS "GStreamer version: ${GST_VERSION}")
 message(STATUS "Python version: ${Python3_VERSION}")
 message(STATUS "Python include: ${Python3_INCLUDE_DIRS}")
 message(STATUS "NumPy include: ${Python3_NumPy_INCLUDE_DIRS}")
-message(STATUS "Install destination: ${CMAKE_INSTALL_PREFIX}/lib/gstreamer-1.0")
+message(STATUS "Install destination: ${PLUGIN_INSTALL_DIR}")
