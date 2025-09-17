@@ -1,7 +1,0 @@
-/home/ubuntu/Projects/gst-template-plugin/build/CMakeFiles/gstqtighost.dir
-/home/ubuntu/Projects/gst-template-plugin/build/CMakeFiles/edit_cache.dir
-/home/ubuntu/Projects/gst-template-plugin/build/CMakeFiles/rebuild_cache.dir
-/home/ubuntu/Projects/gst-template-plugin/build/CMakeFiles/list_install_components.dir
-/home/ubuntu/Projects/gst-template-plugin/build/CMakeFiles/install.dir
-/home/ubuntu/Projects/gst-template-plugin/build/CMakeFiles/install/local.dir
-/home/ubuntu/Projects/gst-template-plugin/build/CMakeFiles/install/strip.dir
